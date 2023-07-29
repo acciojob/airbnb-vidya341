@@ -18,8 +18,18 @@ public class HotelManagementService {
     public HotelManagementRepository repo_obj;
     public String add_hotel(Hotel hotel)
     {
-        String ans = repo_obj.add_hotel(hotel);
-        return ans;
+        try{
+            if(hotel.getHotelName().equals(""))
+                return "FAILURE";
+            String ans = repo_obj.add_hotel(hotel);
+            return ans;
+        }
+        catch (NullPointerException e)
+        {
+            return "FAILURE";
+        }
+
+
     }
     public Integer add_user(User user)
     {
@@ -35,6 +45,8 @@ public class HotelManagementService {
     {
         int no_of_rooms = book.getNoOfRooms();
         int price_per_night = repo_obj.get_room_price(book);
+        if(price_per_night==-1)
+            return -1;
         int amount_to_be_pair = no_of_rooms*price_per_night;
         return amount_to_be_pair;
 

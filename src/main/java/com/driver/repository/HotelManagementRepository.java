@@ -22,8 +22,7 @@ public class HotelManagementRepository {
     {
         try {
             String hotel_name = hotel.getHotelName();
-            if(hotel_name==null || hotel_name.equals(""))
-                return "FAILURE";
+
             if(hos_db.containsKey(hotel_name))
             {
                 return "FAILURE";
@@ -68,6 +67,8 @@ public class HotelManagementRepository {
     }
     public int get_room_price(Booking book)
     {
+        if(book.getNoOfRooms()>hos_db.get(book.getHotelName()).getAvailableRooms())
+            return -1;
         booking_db.put(book.getBookingId(),book);
         String hot_name = book.getHotelName();
         int hot_price_per_night = hos_db.get(hot_name).getPricePerNight();
