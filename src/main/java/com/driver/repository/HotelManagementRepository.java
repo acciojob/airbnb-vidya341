@@ -25,7 +25,7 @@ public class HotelManagementRepository {
 
             if(hos_db.containsKey(hotel_name))
             {
-                return "";
+                return "FAILURE";
             }
             else {
                 hos_db.put(hotel_name,hotel);
@@ -35,7 +35,7 @@ public class HotelManagementRepository {
         }
         catch (NullPointerException e)
         {
-            return "";
+            return "FAILURE";
         }
         return "SUCCESS";
     }

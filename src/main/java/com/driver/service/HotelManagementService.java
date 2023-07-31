@@ -25,7 +25,7 @@ public class HotelManagementService {
         }
         catch (NullPointerException e)
         {
-            return "";
+            return "FAILURE";
         }
 
 
