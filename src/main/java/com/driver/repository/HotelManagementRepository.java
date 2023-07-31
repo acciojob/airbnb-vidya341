@@ -66,11 +66,11 @@ public class HotelManagementRepository {
         }
         return hos_name;
     }
-    public int get_room_price(Booking book)
+    public int get_room_price(Booking book,String id)
     {
         if(book.getNoOfRooms()>hos_db.get(book.getHotelName()).getAvailableRooms())
             return -1;
-        booking_db.put(book.getBookingId(),book);
+        booking_db.put(id,book);
         String hot_name = book.getHotelName();
         int hot_price_per_night = hos_db.get(hot_name).getPricePerNight();
         return hot_price_per_night;

@@ -72,7 +72,7 @@ public class HotelManagementController {
     }
     
     @GetMapping("/get-bookings-by-a-person/{aadharCard}")
-    public int getBookings(@PathVariable("aadharCard")Integer aadharCard)
+    public int getBookings(@PathVariable("aadharCard")int aadharCard)
     {
         //In this function return the bookings done by a person
         int count = ser_obj.get_booking_by_person(aadharCard);

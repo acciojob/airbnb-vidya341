@@ -9,12 +9,26 @@ import com.driver.repository.HotelManagementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class HotelManagementService {
 
     HotelManagementRepository repo_obj = new HotelManagementRepository();
+    HashSet<Integer> room_id = new HashSet<>();
+    public int generate_random_id()
+    {
+        Random rand = new Random();
+        int id = rand.nextInt(1000);
+        while(room_id.contains(id))
+        {
+            id = rand.nextInt();
+        }
+        return id;
+
+    }
     public String add_hotel(Hotel hotel)
     {
         try{
@@ -43,7 +57,8 @@ public class HotelManagementService {
     public int get_priceofroom(Booking book)
     {
         int no_of_rooms = book.getNoOfRooms();
-        int price_per_night = repo_obj.get_room_price(book);
+        int id = generate_random_id();
+        int price_per_night = repo_obj.get_room_price(book,id+"");
         if(price_per_night==-1)
             return -1;
         int amount_to_be_pair = no_of_rooms*price_per_night;
