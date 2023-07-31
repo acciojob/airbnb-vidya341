@@ -25,7 +25,7 @@ public class HotelManagementRepository {
 
             if(hos_db.containsKey(hotel_name))
             {
-                return "FAILURE";
+                return "";
             }
             else {
                 hos_db.put(hotel_name,hotel);
@@ -35,7 +35,7 @@ public class HotelManagementRepository {
         }
         catch (NullPointerException e)
         {
-            return "FAILURE";
+            return "";
         }
         return "SUCCESS";
     }
@@ -46,6 +46,7 @@ public class HotelManagementRepository {
     }
     public Integer add_user(User user)
     {
+
         user_db.put(user.getaadharCardNo(),user);
         return user.getaadharCardNo();
     }

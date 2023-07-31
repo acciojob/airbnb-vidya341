@@ -14,8 +14,7 @@ import java.util.List;
 @Service
 public class HotelManagementService {
 
-    @Autowired
-    public HotelManagementRepository repo_obj;
+    HotelManagementRepository repo_obj = new HotelManagementRepository();
     public String add_hotel(Hotel hotel)
     {
         try{
@@ -26,7 +25,7 @@ public class HotelManagementService {
         }
         catch (NullPointerException e)
         {
-            return "FAILURE";
+            return "";
         }
 
 
